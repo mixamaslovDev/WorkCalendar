@@ -9,8 +9,13 @@
 import UIKit
 import FSCalendar
 
-class CalendarView: UIViewController {
+class CalendarView: UIViewController, UITextFieldDelegate {
     
+    @IBAction func doneBtnFromKeyboardClicked (sender: Any) {
+       self.view.endEditing(true)
+     }
+    let ViewForDoneButtonOnKeyboard = UIToolbar()
+    let btnDoneOnKeyboard = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(doneBtnFromKeyboardClicked))
     fileprivate weak var calendar: FSCalendar!
     
     override func viewDidLoad() {
@@ -20,6 +25,13 @@ class CalendarView: UIViewController {
         addLabels()
         addButton()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func addCalendar() {
@@ -42,7 +54,14 @@ class CalendarView: UIViewController {
         
     }
     
-    
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name == UIResponder.keyboardWillShowNotification {
+            view.frame.origin.y = -300
+        }
+        else {
+            view.frame.origin.y = 0
+        }
+    }
     
     func addTextFields() {
         let workDayTextField: UITextField = UITextField()
@@ -65,11 +84,19 @@ class CalendarView: UIViewController {
             NSLayoutConstraint(item: restDayTextFields, attribute: .trailing, relatedBy: .equal, toItem: view!, attribute: .trailing, multiplier: 1, constant: -50),
             NSLayoutConstraint(item: restDayTextFields, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: 100)])
         
+        
+        ViewForDoneButtonOnKeyboard.sizeToFit()
+        ViewForDoneButtonOnKeyboard.items = [btnDoneOnKeyboard]
+        
+        workDayTextField.inputAccessoryView = ViewForDoneButtonOnKeyboard
+        workDayTextField.keyboardType = .numberPad
         workDayTextField.textAlignment = .center
         workDayTextField.textColor = UIColor.white
         workDayTextField.backgroundColor = UIColor.systemIndigo
         workDayTextField.borderStyle = UITextField.BorderStyle.roundedRect
         
+        restDayTextFields.inputAccessoryView = ViewForDoneButtonOnKeyboard
+        restDayTextFields.keyboardType = .numberPad
         restDayTextFields.textAlignment = .center
         restDayTextFields.textColor = UIColor.white
         restDayTextFields.backgroundColor = UIColor.systemIndigo
