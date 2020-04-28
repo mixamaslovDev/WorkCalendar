@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalendarController.swift
 //  WorkCalendar
 //
 //  Created by Михаил Маслов on 15.12.2019.
@@ -12,11 +12,16 @@ import FSCalendar
 class CalendarView: UIViewController, UITextFieldDelegate {
     
     @IBAction func doneBtnFromKeyboardClicked (sender: Any) {
-       self.view.endEditing(true)
-     }
-    let ViewForDoneButtonOnKeyboard = UIToolbar()
-    let btnDoneOnKeyboard = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(doneBtnFromKeyboardClicked))
+        self.view.endEditing(true)
+    }
     fileprivate weak var calendar: FSCalendar!
+    var workDayTextField: UITextField = UITextField()
+    var restDayTextFields: UITextField = UITextField()
+    let showActualCalendar = UIButton(type: .system)
+    let ViewForDoneButtonOnKeyboard = UIToolbar()
+    
+    
+    let btnDoneOnKeyboard = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(doneBtnFromKeyboardClicked))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +32,16 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    
     
     func addCalendar() {
         let calendar = FSCalendar()
@@ -40,9 +49,11 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         
         view.addSubview(calendar)
         
+        calendar.appearance.borderRadius = 0
+        calendar.collectionViewLayout.sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         calendar.dataSource = self
         calendar.delegate = self
-        
+        calendar.allowsSelection = false
         calendar.translatesAutoresizingMaskIntoConstraints = false
         calendar.topAnchor.constraint(equalTo: safeGuide.topAnchor).isActive = true
         calendar.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
@@ -63,13 +74,28 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range:
+        NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 2
+    }
+    
     func addTextFields() {
-        let workDayTextField: UITextField = UITextField()
-        let restDayTextFields: UITextField = UITextField()
         let safeGuide = self.view.safeAreaLayoutGuide
+        workDayTextField.smartInsertDeleteType = .no
+        workDayTextField.delegate = self
+        restDayTextFields.smartInsertDeleteType = .no
+        restDayTextFields.delegate = self
+        
         
         self.view.addSubview(workDayTextField)
         self.view.addSubview(restDayTextFields)
+        
         
         workDayTextField.translatesAutoresizingMaskIntoConstraints = false
         restDayTextFields.translatesAutoresizingMaskIntoConstraints = false
@@ -102,7 +128,9 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         restDayTextFields.backgroundColor = UIColor.systemIndigo
         restDayTextFields.borderStyle = UITextField.BorderStyle.roundedRect
         
+        
     }
+    
     
     func addLabels() {
         let workDayLabel: UILabel = UILabel()
@@ -133,8 +161,16 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         
     }
     
+    func calendar(calendar: FSCalendar, numberOfEventsForDate date: NSDate) -> Int {
+        let formatter = DateFormatter()
+        let currentDateTime = Date()
+        formatter.dateFormat = "MM-DD"
+        let date1 = formatter.string(from: currentDateTime)
+        let date2 = formatter.string(from: date as Date)
+        return date1 == date2 ? 2 : 2
+    }
+    
     func addButton() {
-        let showActualCalendar = UIButton(type: .system)
         let safeGuide = self.view.safeAreaLayoutGuide
         
         self.view.addSubview(showActualCalendar)
@@ -146,7 +182,8 @@ class CalendarView: UIViewController, UITextFieldDelegate {
             NSLayoutConstraint(item: showActualCalendar, attribute: .top, relatedBy: .equal, toItem: view!, attribute: .top, multiplier: 1, constant: 800),
             NSLayoutConstraint(item: showActualCalendar, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: 200)])
         
-        showActualCalendar.setTitle("Показать календарь", for: .normal)
+        showActualCalendar.setTitle("Рассчитать график", for: .normal)
+        showActualCalendar.setTitleColor(.black, for: .normal)
         showActualCalendar.backgroundColor = UIColor.lightGray
         
     }
@@ -155,10 +192,10 @@ class CalendarView: UIViewController, UITextFieldDelegate {
 
 extension CalendarView: FSCalendarDelegate, FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
-        return "Раб"
+        
+        return "Вых"
         
     }
     
+    
 }
-
-
