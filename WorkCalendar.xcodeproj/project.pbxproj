@@ -11,7 +11,7 @@
 		45233460245A297100B1EC56 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523345F245A297100B1EC56 /* TodayViewController.swift */; };
 		45233463245A297100B1EC56 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45233461245A297100B1EC56 /* MainInterface.storyboard */; };
 		45233467245A297100B1EC56 /* Calendar.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4523345B245A297100B1EC56 /* Calendar.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		4523346D245A2A3100B1EC56 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4523346C245A2A3100B1EC56 /* Localization.strings */; };
+		4523347B245A319E00B1EC56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4523347D245A319E00B1EC56 /* InfoPlist.strings */; };
 		4589F76823A5B07A00889C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76723A5B07A00889C16 /* AppDelegate.swift */; };
 		4589F76A23A5B07A00889C16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76923A5B07A00889C16 /* SceneDelegate.swift */; };
 		4589F76C23A5B07A00889C16 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76B23A5B07A00889C16 /* CalendarController.swift */; };
@@ -53,7 +53,8 @@
 		4523345F245A297100B1EC56 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		45233462245A297100B1EC56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		45233464245A297100B1EC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4523346C245A2A3100B1EC56 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
+		4523347C245A319E00B1EC56 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4523347E245A31AD00B1EC56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4589F76423A5B07A00889C16 /* WorkCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4589F76723A5B07A00889C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4589F76923A5B07A00889C16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +92,7 @@
 				4523345F245A297100B1EC56 /* TodayViewController.swift */,
 				45233461245A297100B1EC56 /* MainInterface.storyboard */,
 				45233464245A297100B1EC56 /* Info.plist */,
-				4523346C245A2A3100B1EC56 /* Localization.strings */,
+				4523347D245A319E00B1EC56 /* InfoPlist.strings */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -214,6 +215,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 4589F75B23A5B07A00889C16;
 			productRefGroup = 4589F76523A5B07A00889C16 /* Products */;
@@ -232,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				45233463245A297100B1EC56 /* MainInterface.storyboard in Resources */,
-				4523346D245A2A3100B1EC56 /* Localization.strings in Resources */,
+				4523347B245A319E00B1EC56 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +330,15 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		4523347D245A319E00B1EC56 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4523347C245A319E00B1EC56 /* ru */,
+				4523347E245A31AD00B1EC56 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		4589F76D23A5B07A00889C16 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -362,7 +373,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -381,7 +392,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -389,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -449,6 +461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -514,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.WorkCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -533,7 +546,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.WorkCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
