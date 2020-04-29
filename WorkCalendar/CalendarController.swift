@@ -15,6 +15,7 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     fileprivate weak var calendar: FSCalendar!
+    fileprivate let gregorian = Calendar(identifier: .gregorian)
     var workDayTextField: UITextField = UITextField()
     var restDayTextFields: UITextField = UITextField()
     let showActualCalendar = UIButton(type: .system)
@@ -28,7 +29,8 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         addCalendar()
         addTextFields()
         addLabels()
-        addButton()
+        addButtons()
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -53,7 +55,8 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         calendar.collectionViewLayout.sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         calendar.dataSource = self
         calendar.delegate = self
-        calendar.allowsSelection = false
+        calendar.allowsSelection = true
+        calendar.allowsMultipleSelection = true
         calendar.translatesAutoresizingMaskIntoConstraints = false
         calendar.topAnchor.constraint(equalTo: safeGuide.topAnchor).isActive = true
         calendar.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = false
@@ -62,6 +65,16 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         calendar.heightAnchor.constraint(equalToConstant: 550).isActive = true
         calendar.widthAnchor.constraint(equalToConstant: 400).isActive = true
         self.calendar = calendar
+        
+//        let dates = [
+//            self.gregorian.date(byAdding: .day, value: 1, to: Date()),
+//            Date(),
+//            self.gregorian.date(byAdding: .day, value: 2, to: Date())
+//        ]
+//        dates.forEach { (date) in
+//            self.calendar.select(date, scrollToDate: true)
+//        }
+//        self.calendar.accessibilityIdentifier = "calendar"
         
     }
     
@@ -84,6 +97,7 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 2
     }
+    
     
     func addTextFields() {
         let safeGuide = self.view.safeAreaLayoutGuide
@@ -161,6 +175,11 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc
+    func todayItemClicked(sender: AnyObject) {
+        self.calendar.setCurrentPage(Date(), animated: false)
+    }
+    
     func calendar(calendar: FSCalendar, numberOfEventsForDate date: NSDate) -> Int {
         let formatter = DateFormatter()
         let currentDateTime = Date()
@@ -170,8 +189,10 @@ class CalendarView: UIViewController, UITextFieldDelegate {
         return date1 == date2 ? 2 : 2
     }
     
-    func addButton() {
+    func addButtons() {
         let safeGuide = self.view.safeAreaLayoutGuide
+        let todayItem = UIBarButtonItem(title: "Сегодня", style: .plain, target: self, action: #selector(self.todayItemClicked(sender:)))
+        self.navigationItem.rightBarButtonItem = todayItem
         
         self.view.addSubview(showActualCalendar)
         showActualCalendar.translatesAutoresizingMaskIntoConstraints = false
@@ -190,12 +211,11 @@ class CalendarView: UIViewController, UITextFieldDelegate {
     
 }
 
-extension CalendarView: FSCalendarDelegate, FSCalendarDataSource {
+extension CalendarView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, subtitleFor date: Date) -> String? {
         
         return "Вых"
         
     }
-    
     
 }
