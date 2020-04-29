@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4523345D245A297100B1EC56 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4523345C245A297100B1EC56 /* NotificationCenter.framework */; };
+		45233460245A297100B1EC56 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4523345F245A297100B1EC56 /* TodayViewController.swift */; };
+		45233463245A297100B1EC56 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45233461245A297100B1EC56 /* MainInterface.storyboard */; };
+		45233467245A297100B1EC56 /* Calendar.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4523345B245A297100B1EC56 /* Calendar.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4523346D245A2A3100B1EC56 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4523346C245A2A3100B1EC56 /* Localization.strings */; };
 		4589F76823A5B07A00889C16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76723A5B07A00889C16 /* AppDelegate.swift */; };
 		4589F76A23A5B07A00889C16 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76923A5B07A00889C16 /* SceneDelegate.swift */; };
 		4589F76C23A5B07A00889C16 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4589F76B23A5B07A00889C16 /* CalendarController.swift */; };
@@ -16,9 +21,39 @@
 		834F3E9E1D974E808B65AA39 /* Pods_WorkCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1462A6DAF65D0AAB8DF4F775 /* Pods_WorkCalendar.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		45233465245A297100B1EC56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4589F75C23A5B07A00889C16 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4523345A245A297100B1EC56;
+			remoteInfo = Calendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		45233468245A297100B1EC56 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				45233467245A297100B1EC56 /* Calendar.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0E2B612FC98D5381FB9FB637 /* Pods-WorkCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WorkCalendar.release.xcconfig"; path = "Target Support Files/Pods-WorkCalendar/Pods-WorkCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		1462A6DAF65D0AAB8DF4F775 /* Pods_WorkCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WorkCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4523345B245A297100B1EC56 /* Calendar.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Calendar.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4523345C245A297100B1EC56 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		4523345F245A297100B1EC56 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		45233462245A297100B1EC56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		45233464245A297100B1EC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4523346C245A2A3100B1EC56 /* Localization.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localization.strings; sourceTree = "<group>"; };
 		4589F76423A5B07A00889C16 /* WorkCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorkCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4589F76723A5B07A00889C16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4589F76923A5B07A00889C16 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +66,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		45233458245A297100B1EC56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4523345D245A297100B1EC56 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4589F76123A5B07A00889C16 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -42,10 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4523345E245A297100B1EC56 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				4523345F245A297100B1EC56 /* TodayViewController.swift */,
+				45233461245A297100B1EC56 /* MainInterface.storyboard */,
+				45233464245A297100B1EC56 /* Info.plist */,
+				4523346C245A2A3100B1EC56 /* Localization.strings */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		4589F75B23A5B07A00889C16 = {
 			isa = PBXGroup;
 			children = (
 				4589F76623A5B07A00889C16 /* WorkCalendar */,
+				4523345E245A297100B1EC56 /* Calendar */,
 				4589F76523A5B07A00889C16 /* Products */,
 				4B7CBE7D13149EE0F3B999A2 /* Pods */,
 				EBDF1808EC95C69718EE6313 /* Frameworks */,
@@ -56,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4589F76423A5B07A00889C16 /* WorkCalendar.app */,
+				4523345B245A297100B1EC56 /* Calendar.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				1462A6DAF65D0AAB8DF4F775 /* Pods_WorkCalendar.framework */,
+				4523345C245A297100B1EC56 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -94,6 +151,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4523345A245A297100B1EC56 /* Calendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4523346B245A297100B1EC56 /* Build configuration list for PBXNativeTarget "Calendar" */;
+			buildPhases = (
+				45233457245A297100B1EC56 /* Sources */,
+				45233458245A297100B1EC56 /* Frameworks */,
+				45233459245A297100B1EC56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Calendar;
+			productName = Calendar;
+			productReference = 4523345B245A297100B1EC56 /* Calendar.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4589F76323A5B07A00889C16 /* WorkCalendar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4589F77823A5B07E00889C16 /* Build configuration list for PBXNativeTarget "WorkCalendar" */;
@@ -103,10 +177,12 @@
 				4589F76123A5B07A00889C16 /* Frameworks */,
 				4589F76223A5B07A00889C16 /* Resources */,
 				D6FDC18B6899ED07F51237C6 /* [CP] Embed Pods Frameworks */,
+				45233468245A297100B1EC56 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				45233466245A297100B1EC56 /* PBXTargetDependency */,
 			);
 			name = WorkCalendar;
 			productName = WorkCalendar;
@@ -119,10 +195,13 @@
 		4589F75C23A5B07A00889C16 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Михаил Маслов";
 				TargetAttributes = {
+					4523345A245A297100B1EC56 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 					4589F76323A5B07A00889C16 = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -142,11 +221,21 @@
 			projectRoot = "";
 			targets = (
 				4589F76323A5B07A00889C16 /* WorkCalendar */,
+				4523345A245A297100B1EC56 /* Calendar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		45233459245A297100B1EC56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45233463245A297100B1EC56 /* MainInterface.storyboard in Resources */,
+				4523346D245A2A3100B1EC56 /* Localization.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4589F76223A5B07A00889C16 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +291,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		45233457245A297100B1EC56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45233460245A297100B1EC56 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4589F76023A5B07A00889C16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,7 +311,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		45233466245A297100B1EC56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4523345A245A297100B1EC56 /* Calendar */;
+			targetProxy = 45233465245A297100B1EC56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		45233461245A297100B1EC56 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				45233462245A297100B1EC56 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		4589F76D23A5B07A00889C16 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -234,6 +347,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		45233469245A297100B1EC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.WorkCalendar.Calendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4523346A245A297100B1EC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = edu.WorkCalendar.Calendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4589F77623A5B07E00889C16 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -352,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF2C20B9CF4D57510997BD0C /* Pods-WorkCalendar.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WorkCalendar/Info.plist;
@@ -370,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E2B612FC98D5381FB9FB637 /* Pods-WorkCalendar.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = WorkCalendar/Info.plist;
@@ -387,6 +540,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4523346B245A297100B1EC56 /* Build configuration list for PBXNativeTarget "Calendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45233469245A297100B1EC56 /* Debug */,
+				4523346A245A297100B1EC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4589F75F23A5B07A00889C16 /* Build configuration list for PBXProject "WorkCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
