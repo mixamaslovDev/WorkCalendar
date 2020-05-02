@@ -9,4 +9,8 @@ target 'WorkCalendar' do
 
   pod 'FSCalendar'
 
+target 'Calendar' do
+        inherit! :search_paths
+    end
+
 end
